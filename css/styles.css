@@ -1,0 +1,220 @@
+/* Basic styles for the whole page */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+    background: linear-gradient(135deg, #174ea6, #62a8e5);
+    min-height: 100vh;
+}
+
+/* Keep the dashboard in the middle of the page */
+.container {
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+h1 {
+    margin: 0;
+}
+
+/* General button styles */
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+/* Search form */
+#searchForm {
+    display: flex;
+    gap: 10px;
+}
+
+#cityInput {
+    flex: 1;
+    min-width: 0;
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+#searchForm button {
+    background: #ffd166;
+    color: #222222;
+    font-weight: bold;
+}
+
+/* Search history */
+.history {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.history button {
+    background: #ffffff;
+    color: #174ea6;
+}
+
+.clear-button {
+    margin-top: 10px;
+    background: transparent;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+}
+
+/* Loading and error messages */
+#message {
+    margin: 20px 0;
+    font-weight: bold;
+}
+
+/* Current weather card */
+.weather-card {
+    margin-top: 25px;
+    padding: 25px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.16);
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+}
+
+.weather-card h2 {
+    margin-bottom: 5px;
+}
+
+.temperature-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#weatherIcon {
+    width: 100px;
+    height: 100px;
+}
+
+#temperature {
+    font-size: 50px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+#condition {
+    text-transform: capitalize;
+    font-size: 20px;
+}
+
+/* Humidity, wind and pressure */
+.weather-details {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Five-day forecast */
+.forecast-section {
+    margin-top: 30px;
+}
+
+.forecast {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.forecast-card {
+    padding: 15px 8px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.18);
+    text-align: center;
+}
+
+.forecast-card img {
+    width: 65px;
+    height: 65px;
+}
+
+.forecast-card p {
+    margin: 8px 0;
+}
+
+.forecast-condition {
+    text-transform: capitalize;
+}
+
+/* Footer */
+footer {
+    margin-top: 35px;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* Change the layout on smaller screens */
+@media (max-width: 650px) {
+    body {
+        padding: 15px;
+    }
+
+    header h1 {
+        font-size: 24px;
+    }
+
+    #searchForm {
+        flex-direction: column;
+    }
+
+    #searchForm button {
+        width: 100%;
+    }
+
+    .weather-details {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    /* Let users swipe through forecast cards on a phone */
+    .forecast {
+        display: flex;
+        overflow-x: auto;
+        padding-bottom: 12px;
+    }
+
+    .forecast-card {
+        flex: 0 0 125px;
+    }
+
+    #temperature {
+        font-size: 40px;
+    }
+}
+
+/* Hide elements marked as hidden by HTML or JavaScript */
+[hidden] {
+    display: none !important;
+}
