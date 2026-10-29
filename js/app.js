@@ -24,3 +24,9 @@ let currentCity = "";
 let searchHistory = JSON.parse(
     localStorage.getItem("weatherHistory") || "[]"
 );
+
+// Show the temperature unit on the button.
+function updateUnitButton() {
+    unitButton.textContent =
+        unit === "C" ? "Switch to °F" : "Switch to °C";
+}
