@@ -44,3 +44,8 @@ function convertTemperature(celsius) {
 function showTemperature(celsius) {
     return `${convertTemperature(celsius)}°${unit}`;
 }
+
+// Display a message to the user.
+function showMessage(text) {
+    message.textContent = text;
+}
