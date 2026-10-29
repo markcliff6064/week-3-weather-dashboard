@@ -136,3 +136,35 @@ button:hover {
     gap: 10px;
     margin-top: 20px;
 }
+
+
+/* Five-day forecast */
+.forecast-section {
+    margin-top: 30px;
+}
+
+.forecast {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.forecast-card {
+    padding: 15px 8px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.18);
+    text-align: center;
+}
+
+.forecast-card img {
+    width: 65px;
+    height: 65px;
+}
+
+.forecast-card p {
+    margin: 8px 0;
+}
+
+.forecast-condition {
+    text-transform: capitalize;
+}
