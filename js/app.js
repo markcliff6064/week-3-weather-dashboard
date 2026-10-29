@@ -225,3 +225,45 @@ async function getWeather(city) {
         }
     }
 }
+
+
+// Display the current weather details.
+function displayCurrentWeather() {
+    // Destructuring helps us take values from the API response.
+    const {
+        name,
+        sys: { country },
+        main: { temp, feels_like, humidity, pressure },
+        wind: { speed },
+        weather
+    } = currentData;
+
+    const { description, icon, main: condition } = weather[0];
+
+    document.getElementById("cityName").textContent =
+        `${name}, ${country}`;
+
+    document.getElementById("dateTime").textContent =
+        new Date().toLocaleString();
+
+    document.getElementById("temperature").textContent =
+        showTemperature(temp);
+
+    document.getElementById("feelsLike").textContent =
+        `Feels like: ${showTemperature(feels_like)}`;
+
+    document.getElementById("condition").textContent = description;
+    document.getElementById("humidity").textContent = humidity;
+    document.getElementById("wind").textContent = speed;
+    document.getElementById("pressure").textContent = pressure;
+
+    const weatherIcon = document.getElementById("weatherIcon");
+    weatherIcon.src =
+        `https://openweathermap.org/img/wn/${icon}@2x.png`;
+    weatherIcon.alt = description;
+
+    // Change the background according to the weather.
+    changeBackground(condition, icon);
+
+    weatherCard.hidden = false;
+}
