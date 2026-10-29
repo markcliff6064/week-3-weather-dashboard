@@ -30,3 +30,12 @@ function updateUnitButton() {
     unitButton.textContent =
         unit === "C" ? "Switch to °F" : "Switch to °C";
 }
+
+// Convert Celsius to Fahrenheit when needed.
+function convertTemperature(celsius) {
+    if (unit === "F") {
+        return Math.round((celsius * 9) / 5 + 32);
+    }
+
+    return Math.round(celsius);
+}
