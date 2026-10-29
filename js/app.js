@@ -11,3 +11,6 @@ const weatherCard = document.getElementById("weatherCard");
 const forecast = document.getElementById("forecast");
 const historyContainer = document.getElementById("history");
 const clearHistoryButton = document.getElementById("clearHistory");
+
+// Store the user's preferred temperature unit.
+let unit = localStorage.getItem("weatherUnit") || "C";
