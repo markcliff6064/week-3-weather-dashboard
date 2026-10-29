@@ -375,3 +375,7 @@ clearHistoryButton.addEventListener("click", function () {
 
     displayHistory();
 });
+
+// Set up the page when it first opens.
+updateUnitButton();
+displayHistory();
