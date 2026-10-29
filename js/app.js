@@ -319,3 +319,28 @@ function displayForecast() {
         forecast.appendChild(card);
     });
 }
+
+
+// Change the background based on the current weather.
+function changeBackground(condition, icon) {
+    const body = document.body;
+
+    // OpenWeatherMap icons ending in "n" represent night.
+    if (icon.endsWith("n")) {
+        body.style.background =
+            "linear-gradient(135deg, #191970, #483d8b)";
+    } else if (condition.toLowerCase().includes("rain")) {
+        body.style.background =
+            "linear-gradient(135deg, #40566f, #8299ad)";
+    } else if (condition.toLowerCase().includes("snow")) {
+        body.style.background =
+            "linear-gradient(135deg, #b8d8e8, #eef7ff)";
+    } else if (condition.toLowerCase().includes("cloud")) {
+        body.style.background =
+            "linear-gradient(135deg, #526777, #9eafb9)";
+    } else {
+        body.style.background =
+            "linear-gradient(135deg, #e89b30, #f6cf73)";
+    }
+}
+
