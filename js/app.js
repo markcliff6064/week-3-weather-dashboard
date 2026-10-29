@@ -344,3 +344,9 @@ function changeBackground(condition, icon) {
     }
 }
 
+// Search when the form is submitted.
+searchForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    getWeather(cityInput.value.trim());
+});
