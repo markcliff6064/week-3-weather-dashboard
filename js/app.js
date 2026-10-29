@@ -379,3 +379,6 @@ clearHistoryButton.addEventListener("click", function () {
 // Set up the page when it first opens.
 updateUnitButton();
 displayHistory();
+
+// Load Nairobi as the first example city.
+getWeather("Nairobi");
