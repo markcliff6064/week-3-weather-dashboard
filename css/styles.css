@@ -127,3 +127,12 @@ button:hover {
     text-transform: capitalize;
     font-size: 20px;
 }
+
+/* Humidity, wind and pressure */
+.weather-details {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
