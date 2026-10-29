@@ -350,3 +350,19 @@ searchForm.addEventListener("submit", function (event) {
 
     getWeather(cityInput.value.trim());
 });
+
+// Switch between Celsius and Fahrenheit.
+unitButton.addEventListener("click", function () {
+    unit = unit === "C" ? "F" : "C";
+
+    // Remember the selected unit.
+    localStorage.setItem("weatherUnit", unit);
+
+    updateUnitButton();
+
+    // Re-display the saved data without another API request.
+    if (currentData && forecastData) {
+        displayCurrentWeather();
+        displayForecast();
+    }
+});
