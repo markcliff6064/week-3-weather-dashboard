@@ -14,3 +14,8 @@ const clearHistoryButton = document.getElementById("clearHistory");
 
 // Store the user's preferred temperature unit.
 let unit = localStorage.getItem("weatherUnit") || "C";
+
+// This lets us switch units without fetching again.
+let currentData = null;
+let forecastData = null;
+let currentCity = "";
