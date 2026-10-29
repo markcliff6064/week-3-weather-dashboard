@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    
+
         <div class="container">
 
         <!-- App header and temperature unit button -->
@@ -15,7 +15,17 @@
             <h1>WeatherNow</h1>
             <button id="unitButton">Switch to °F</button>
         </header>
-
+        <!-- Search form for finding a city -->
+        <form id="searchForm">
+            <input
+                type="text"
+                id="cityInput"
+                placeholder="Enter a city, e.g. Nairobi"
+                autocomplete="off"
+                required
+            >
+            <button type="submit">Search</button>
+        </form>
     <script src="js/app.js"></script>
 </body>
 </html>
