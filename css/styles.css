@@ -84,3 +84,9 @@ button:hover {
     color: #ffffff;
     border: 1px solid #ffffff;
 }
+
+/* Loading and error messages */
+#message {
+    margin: 20px 0;
+    font-weight: bold;
+}
