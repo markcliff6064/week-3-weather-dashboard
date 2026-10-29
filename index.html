@@ -36,6 +36,26 @@
         <!-- Loading and error messages -->
         <p id="message" role="status" aria-live="polite"></p>
 
+                <!-- Current weather information -->
+        <section id="weatherCard" class="weather-card" hidden>
+            <h2 id="cityName">City</h2>
+            <p id="dateTime"></p>
+
+            <div class="temperature-area">
+                <img id="weatherIcon" src="" alt="Weather icon">
+                <p id="temperature">--°C</p>
+            </div>
+
+            <p id="condition">Weather condition</p>
+            <p id="feelsLike">Feels like: --</p>
+
+            <div class="weather-details">
+                <p>Humidity: <span id="humidity">--</span>%</p>
+                <p>Wind: <span id="wind">--</span> m/s</p>
+                <p>Pressure: <span id="pressure">--</span> hPa</p>
+            </div>
+        </section>
+
     <script src="js/app.js"></script>
 </body>
 </html>
