@@ -366,3 +366,12 @@ unitButton.addEventListener("click", function () {
         displayForecast();
     }
 });
+
+// Clear the saved search history.
+clearHistoryButton.addEventListener("click", function () {
+    searchHistory = [];
+
+    localStorage.removeItem("weatherHistory");
+
+    displayHistory();
+});
