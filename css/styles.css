@@ -168,3 +168,10 @@ button:hover {
 .forecast-condition {
     text-transform: capitalize;
 }
+
+/* Footer */
+footer {
+    margin-top: 35px;
+    text-align: center;
+    font-size: 14px;
+}
