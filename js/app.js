@@ -103,3 +103,125 @@ function saveHistory(city) {
 
     displayHistory();
 }
+
+
+// Fetch current weather and the five-day forecast.
+async function getWeather(city) {
+    // Stop empty searches and prevent placeholder API keys being used.
+    if (!city.trim()) {
+        showMessage("Please enter a city name.");
+        return;
+    }
+
+    if (API_KEY === "YOUR_API_KEY_HERE") {
+        showMessage("Add your OpenWeatherMap API key in app.js.");
+        return;
+    }
+
+    showMessage("Loading weather...");
+    weatherCard.hidden = true;
+    forecast.innerHTML = "";
+
+    // Save the last successful data before trying a new search.
+    const previousCity = currentCity;
+    const previousCurrent = currentData;
+    const previousForecast = forecastData;
+
+    try {
+        // The API returns temperatures in Celsius.
+        const currentURL =
+            `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${API_KEY}&units=metric`;
+
+        const forecastURL =
+            `https://api.openweathermap.org/data/2.5/forecast?q=${encodeURIComponent(city)}&appid=${API_KEY}&units=metric`;
+
+        // Request both sets of weather data at the same time.
+        const responses = await Promise.all([
+            fetch(currentURL),
+            fetch(forecastURL)
+        ]);
+
+        // Check both responses for errors.
+        for (const response of responses) {
+            if (!response.ok) {
+                if (response.status === 404) {
+                    throw new Error("City not found. Try another city.");
+                }
+
+                if (response.status === 401) {
+                    throw new Error(
+                        "Invalid API key. Check your OpenWeatherMap key."
+                    );
+                }
+
+                if (response.status === 429) {
+                    throw new Error(
+                        "Too many requests. Please wait and try again."
+                    );
+                }
+
+                throw new Error("Unable to get weather data.");
+            }
+        }
+
+        // Convert the API responses into JavaScript objects.
+        const currentResult = await responses[0].json();
+        const forecastResult = await responses[1].json();
+
+        // Keep the data so temperature changes do not need another request.
+        currentData = currentResult;
+        forecastData = forecastResult;
+        currentCity = currentResult.name;
+
+        // Save the latest successful data for offline use.
+        localStorage.setItem("weatherCache", JSON.stringify({
+            city: currentCity,
+            current: currentData,
+            forecast: forecastData,
+            savedAt: Date.now()
+        }));
+
+        // Remember the city only after a successful search.
+        saveHistory(currentCity);
+
+        // Display both sections.
+        displayCurrentWeather();
+        displayForecast();
+
+        showMessage("");
+    } catch (error) {
+        // If the network fails, try to use the last saved weather data.
+        const savedWeather = localStorage.getItem("weatherCache");
+
+        if (savedWeather && error instanceof TypeError) {
+            const cached = JSON.parse(savedWeather);
+
+            currentCity = cached.city;
+            currentData = cached.current;
+            forecastData = cached.forecast;
+
+            displayCurrentWeather();
+            displayForecast();
+
+            const minutesAgo = Math.floor(
+                (Date.now() - cached.savedAt) / 60000
+            );
+
+            showMessage(
+                `Offline: showing saved weather for ${cached.city}. ` +
+                `Last updated ${minutesAgo} minute(s) ago.`
+            );
+        } else {
+            showMessage(error.message || "A network error occurred.");
+
+            // Keep the last displayed data available if a search fails.
+            if (previousCurrent && previousForecast) {
+                currentCity = previousCity;
+                currentData = previousCurrent;
+                forecastData = previousForecast;
+                displayCurrentWeather();
+                displayForecast();
+            }
+        }
+    }
+}
