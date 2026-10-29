@@ -175,3 +175,48 @@ footer {
     text-align: center;
     font-size: 14px;
 }
+
+
+/* Change the layout on smaller screens */
+@media (max-width: 650px) {
+    body {
+        padding: 15px;
+    }
+
+    header h1 {
+        font-size: 24px;
+    }
+
+    #searchForm {
+        flex-direction: column;
+    }
+
+    #searchForm button {
+        width: 100%;
+    }
+
+    .weather-details {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    /* Let users swipe through forecast cards on a phone */
+    .forecast {
+        display: flex;
+        overflow-x: auto;
+        padding-bottom: 12px;
+    }
+
+    .forecast-card {
+        flex: 0 0 125px;
+    }
+
+    #temperature {
+        font-size: 40px;
+    }
+}
+
+/* Hide elements marked as hidden by HTML or JavaScript */
+[hidden] {
+    display: none !important;
+}
