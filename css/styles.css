@@ -11,3 +11,9 @@ body {
     background: linear-gradient(135deg, #174ea6, #62a8e5);
     min-height: 100vh;
 }
+
+/* Keep the dashboard in the middle of the page */
+.container {
+    max-width: 950px;
+    margin: 0 auto;
+}
