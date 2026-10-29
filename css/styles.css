@@ -64,3 +64,23 @@ button:hover {
     color: #222222;
     font-weight: bold;
 }
+
+/* Search history */
+.history {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.history button {
+    background: #ffffff;
+    color: #174ea6;
+}
+
+.clear-button {
+    margin-top: 10px;
+    background: transparent;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+}
