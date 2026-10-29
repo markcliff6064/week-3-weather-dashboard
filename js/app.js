@@ -19,3 +19,8 @@ let unit = localStorage.getItem("weatherUnit") || "C";
 let currentData = null;
 let forecastData = null;
 let currentCity = "";
+
+// Read saved search history from localStorage.
+let searchHistory = JSON.parse(
+    localStorage.getItem("weatherHistory") || "[]"
+);
