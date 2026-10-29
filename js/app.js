@@ -267,3 +267,55 @@ function displayCurrentWeather() {
 
     weatherCard.hidden = false;
 }
+
+
+// Get five forecast days from the API's three-hour forecast list.
+function displayForecast() {
+    forecast.innerHTML = "";
+
+    // Keep the first forecast entry for each date.
+    // Prefer an entry around noon so it represents daytime weather.
+    const dailyForecasts = {};
+
+    forecastData.list.forEach(function (item) {
+        const date = item.dt_txt.split(" ")[0];
+        const time = item.dt_txt.split(" ")[1];
+
+        if (!dailyForecasts[date] || time.startsWith("12:00:00")) {
+            dailyForecasts[date] = item;
+        }
+    });
+
+    // Use the first five available dates.
+    const days = Object.values(dailyForecasts).slice(0, 5);
+
+    days.forEach(function (day) {
+        const card = document.createElement("div");
+        card.className = "forecast-card";
+
+        const dayName = new Date(day.dt_txt).toLocaleDateString(
+            "en",
+            { weekday: "short" }
+        );
+
+        const icon = day.weather[0].icon;
+        const condition = day.weather[0].description;
+
+        // These values are estimates from three-hour forecast entries,
+        // not guaranteed daily maximum and minimum temperatures.
+        const high = showTemperature(day.main.temp_max);
+        const low = showTemperature(day.main.temp_min);
+
+        card.innerHTML = `
+            <h3>${dayName}</h3>
+            <img
+                src="https://openweathermap.org/img/wn/${icon}@2x.png"
+                alt="${condition}"
+            >
+            <p>${high} / ${low}</p>
+            <p class="forecast-condition">${condition}</p>
+        `;
+
+        forecast.appendChild(card);
+    });
+}
