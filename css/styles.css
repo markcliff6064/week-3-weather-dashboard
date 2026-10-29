@@ -90,3 +90,40 @@ button:hover {
     margin: 20px 0;
     font-weight: bold;
 }
+
+/* Current weather card */
+.weather-card {
+    margin-top: 25px;
+    padding: 25px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.16);
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+}
+
+.weather-card h2 {
+    margin-bottom: 5px;
+}
+
+.temperature-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#weatherIcon {
+    width: 100px;
+    height: 100px;
+}
+
+#temperature {
+    font-size: 50px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+#condition {
+    text-transform: capitalize;
+    font-size: 20px;
+}
