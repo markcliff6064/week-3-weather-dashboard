@@ -39,3 +39,8 @@ function convertTemperature(celsius) {
 
     return Math.round(celsius);
 }
+
+// Add the correct temperature symbol.
+function showTemperature(celsius) {
+    return `${convertTemperature(celsius)}°${unit}`;
+}
