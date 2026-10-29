@@ -43,3 +43,24 @@ button {
 button:hover {
     opacity: 0.85;
 }
+
+/* Search form */
+#searchForm {
+    display: flex;
+    gap: 10px;
+}
+
+#cityInput {
+    flex: 1;
+    min-width: 0;
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+#searchForm button {
+    background: #ffd166;
+    color: #222222;
+    font-weight: bold;
+}
